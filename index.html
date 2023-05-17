@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Display page</title>
 </head>
 <body>
     <!-- navbar 추가 -->
-    <header class="d-flex justify-content-center align-items-center py-5 fs-1 fw-bold" style="width:100vw">PROJECT UNTIL NOW</header> 
+    <header class="d-flex justify-content-center align-items-center py-5 fs-1 fw-bold" style="width:100vw;height:65rem;">
+        PROJECT UNTIL NOW
+    </header>
+    <div class="d-flex justify-content-center">
+        <div class="border border-dark rounded px-3 py-2 fs-3 fw-semibold">ABOUT ME</div>
+        <div class="border border-dark rounded px-3 py-2 fs-3 fw-semibold ms-3">SKILLS</div>
+        <div class="border border-dark rounded px-3 py-2 fs-3 fw-semibold ms-3">PROJECTS</div>
+        <div class="border border-dark rounded px-3 py-2 fs-3 fw-semibold ms-3">GITHUB</div>
+    </div>
     <main class="container d-flex justify-content-center flex-column py-5" style="width:100%;height:100%;">
-        <h1 class="fs-1 fw-bold">Title : Kim's Portfolio</h1>
-        <p class="py-3">안녕하세요. ~~입니다. ~인 것이 제 장점입니다.</p>
-        <h2 class="fs-1 fw-bold">ABOUT ME</h2>
+        <!-- <h1 class="py-3">자기소개?</h1> -->
+        <h2 class="fs-1 fw-bold mt-5">ABOUT ME</h2>
         <div class="py-3 row">
             <div class="py-3 col-4">
                 <h2 class="fs-3 fw-bolder">이름</h2>
@@ -41,8 +49,8 @@
                 <p class="fs-4">The university. ph.d</p>
             </div>
         </div>
-        <h2 class="fs-1 fw-bold">SKILLS</h2>
-        <div class="py-3 rounded row">
+        <h2 class="fs-1 fw-bold mt-5">SKILLS</h2>
+        <div class="py-3 row">
             <div class="py-3 col-4">
                 <div class="border border-black rounded p-3">
                     <h3 class="fw-semibold">FrontEnd</h3>
@@ -86,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <h2 class="fs-1 fw-bold">PROJECTS</h2>
+        <h2 class="fs-1 fw-bold mt-5">PROJECTS</h2>
         <div class="d-flex flex-column pt-3">
             <h3 class="semibold">small project</h3>
             <div class="row border border-black rounded p-5">
@@ -103,6 +111,7 @@
                     <h4>Backend</h4>
                     <h4>DB</h4>
                     <h4>Deployment</h4>
+                    <h4>발생한 문제점과 해결과정</h4>
                     <h4>Github link</h4>
                 </div>
             </div>
@@ -121,6 +130,7 @@
                     <h4>Backend</h4>
                     <h4>DB</h4>
                     <h4>Deployment</h4>
+                    <h4>발생한 문제점과 해결과정</h4>
                     <h4>Github link</h4>
                 </div>
             </div>
@@ -129,13 +139,45 @@
             <h3 class="semibold">site project</h3>
             <div class="row border border-black rounded p-5">
                 <div class="col-4 py-3 fw-medium fs-3">photo</div>
+                <div class="col-8 py-3 fw-medium">
+                    <h4>목적과 과정에 대한 설명</h4>
+                    <p>목적 : django를 사용한 서비스 개발</p>
+                    <p>
+                        과정 : Discord 음성 채팅을 사용해 회의 진행
+                        1. 아이디어 도출 및 구체화 (노션사용)
+                        2. DB 설계 (ERD 사용), 화면 구성 설정 (Figma 사용)
+                        3. 업무 배분 및 개발 진행 (파트별로 구분. 상품정보페이지 담당)
+                        4. 일일 스크럼 진행
+                        5. 개발 완료 후 시연 발표 (zoom을 통해 진행)
+                    </p>
+                    <h4>주요기능</h4>
+                    <p>
+                        1. 기본적인 회원관리 기능 (회원가입, 로그인)
+                        2. 상품 정보 조회 및 장바구니에 담기
+                        3. 유저 정보 페이지
+                    </p>
+                    <h4>FrontEnd</h4>
+                    <h4>Backend</h4>
+                    <h4>DB</h4>
+                    <h4>Deployment</h4>
+                    <h4>발생한 문제점과 해결과정</h4>
+                    <h4>Github link</h4>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column pt-3 pb-5">
+            <h3 class="semibold">profile page</h3>
+            <div class="row border border-black rounded p-5">
+                <div class="col-4 py-3 fw-medium fs-3">photo</div>
                 <div class="col-8 py-3 fw-medium fs-3">
                     <h4>목적과 과정에 대한 설명</h4>
+                    <p>목적</p>
                     <h4>주요기능</h4>
                     <h4>FrontEnd</h4>
                     <h4>Backend</h4>
                     <h4>DB</h4>
                     <h4>Deployment</h4>
+                    <h4>발생한 문제점과 해결과정</h4>
                     <h4>Github link</h4>
                 </div>
             </div>
@@ -145,6 +187,7 @@
         <p><a href="">Github Link</a></p>
         <p>project of T.H</p>
     </footer>
+    <!-- <div>page up 버튼</div> -->
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
