@@ -7,4 +7,11 @@
     background-color: rgb(246, 245, 245);
 }
 
-  
+
+#buttonToTitle>div>div:hover {
+    background-color: rgb(230, 229, 229);
+}
+
+@media screen {
+    
+}
