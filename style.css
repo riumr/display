@@ -12,6 +12,12 @@
     background-color: rgb(230, 229, 229);
 }
 
+#pageUpButton {
+    position:fixed;
+    bottom:2.5rem;
+    right:10rem;
+}
+
 @media screen {
     
 }

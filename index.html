@@ -10,7 +10,7 @@
     <title>Display page</title>
 </head>
 <body>
-    <header class="d-flex justify-content-center align-items-center py-5 fs-1 fw-bold" style="width:100vw;height:65rem;">
+    <header id="pageTitle"class="d-flex justify-content-center align-items-center py-5 fs-1 fw-bold" style="width:100vw;height:65rem;">
         PROJECT UNTIL NOW
     </header>
     <!-- 위치 고정하기 -->
@@ -22,9 +22,9 @@
             <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#githubRepo" class="text-decoration-none text-black">GITHUB</a></div>
         </div>
     </div>
-    <main class="container d-flex justify-content-center flex-column py-5" style="width:100%;height:100%;">
+    <main class="d-flex justify-content-center flex-column py-5" style="width:100%;height:100%;">
         <!-- <h1 class="py-3">자기소개?</h1> -->
-        <div id="aboutMe">
+        <div id="aboutMe" class="container">
             <h2 class="fs-1 fw-bold mt-5">ABOUT ME</h2>
             <div class="py-3 row">
                 <div class="py-3 col-4">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div id="skills">
+        <div id="skills" class="container">
             <h2 class="fs-1 fw-bold mt-5">SKILLS</h2>
             <div class="py-3 row">
                 <div class="py-3 col-4">
@@ -73,6 +73,8 @@
                         <p class="text-white bg-success fs-3 fw-bold rounded p-2">Django</p>
                         <p class="text-white bg-primary fs-3 fw-bold rounded p-2">Sqlite</p>
                         <p class="text-primary fw-bold fs-3 rounded p-2">Postgresql</p>
+                        <p class="text-warning bg-white fw-bold fs-3 rounded p-2">Google Colab</p>
+                        <p class="text-primary bg-white fw-bold fs-3 rounded p-2">R</p>
                     </div>
                 </div>
                 <div class="py-3 col-4">
@@ -102,100 +104,116 @@
             </div>
         </div>
         <div id="projects">
-            <h2 class="fs-1 fw-bold mt-5">PROJECTS</h2>
-            <div class="d-flex flex-column pt-3">
-                <h3 class="semibold">small project</h3>
-                <div class="row border border-black rounded p-5">
-                    <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                    <div class="col-8 py-3 fw-medium">
-                        <h4>목적과 과정에 대한 설명</h4>
-                        <p>목적 : Django 기능에 대한 복습</p>
-                        <p>과정 : 게시판, 회원가입 및 로그인, 유저페이지 구현</p>
-                        <h4>주요기능</h4>
-                        <p>게시판 : 글 작성, 조회, 수정, 삭제</p>
-                        <p>유저관리 : 회원가입, 로그인, 로그아웃</p>
-                        <p>유저페이지 : 좋아요 한 글과 작성한 글 조회</p>
-                        <h4>FrontEnd</h4>
-                        <h4>Backend</h4>
-                        <h4>DB</h4>
-                        <h4>Deployment</h4>
-                        <h4>발생한 문제점과 해결과정</h4>
-                        <h4>Github link</h4>
+            <div class="container">
+                <h2 class="fs-1 fw-bold mt-5">PROJECTS</h2>
+                <div class="d-flex flex-column pt-3">
+                    <h3 class="semibold">small project</h3>
+                    <div class="row border border-black rounded p-5">
+                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
+                        <div class="col-8 py-3 fw-medium">
+                            <h4>목적과 과정에 대한 설명</h4>
+                            <p>목적 : Django 기능에 대한 복습</p>
+                            <p>과정 : 게시판, 회원가입 및 로그인, 유저페이지 구현</p>
+                            <p>얻은 경험 : </p>
+                            <h4>주요기능</h4>
+                            <p>게시판 : 글 작성, 조회, 수정, 삭제</p>
+                            <p>유저관리 : 회원가입, 로그인, 로그아웃</p>
+                            <p>유저페이지 : 좋아요 한 글과 작성한 글 조회</p>
+                            <h4>FrontEnd</h4>
+                            <p>HTML, CSS, bootstrap</p>
+                            <h4>Backend</h4>
+                            <p>Django</p>
+                            <h4>DB</h4>
+                            <p>sqlite</p>
+                            <h4>Deployment</h4>
+                            <p>Firebase</p>
+                            <h4>Github link</h4>
+                            <!-- 토글 -->
+                            <h4>발생한 문제점과 해결과정</h4>
+                            <p>Django Authentication System을 사용해 회원가입/로그인을 구현하려고 했는데, 자꾸 오류가 발생했다.<br>
+                                -> cache 메모리를 사용해 해당 기능을 직접구현하려고 시도했다. <br>
+                                -> DB 저장과 인증까지는 성공했지만 암호화과정에서 문제가 생겼다 <br>
+                                -> 다시 Django Authenticaiont System을 시도했고, 오류가 발생하지 않아 이를 사용해 유저관련 기능을 구현했다.
+                            </p>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column pt-3">
-                <h3 class="semibold">text project</h3>
-                <div class="row border border-black rounded p-5">
-                    <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                    <div class="col-8 py-3 fw-medium">
-                        <h4>목적과 과정에 대한 설명</h4>
-                        <p>목적 : 민원 발생 현황 파악</p>
-                        <p>과정 : 엑셀파일 전처리를 통해 키워드 추출, 기간과 기관에 따라 분류, 시각화 도구로 시각화</p>
-                        <h4>주요기능</h4>
-                        <p>자주 발생하는 상위 10개 키워드의 기간별 추세 그래프와 표, 전체 기간 동안 발생한 키워드의 wordcloud</p>
-                        <h4>FrontEnd</h4>
-                        <h4>Backend</h4>
-                        <h4>DB</h4>
-                        <h4>Deployment</h4>
-                        <h4>발생한 문제점과 해결과정</h4>
-                        <h4>Github link</h4>
+                <div class="d-flex flex-column pt-3">
+                    <h3 class="semibold">text project</h3>
+                    <div class="row border border-black rounded p-5">
+                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
+                        <div class="col-8 py-3 fw-medium">
+                            <h4>목적과 과정에 대한 설명</h4>
+                            <p>목적 : 민원 발생 현황 파악</p>
+                            <p>과정 : 엑셀파일 전처리를 통해 키워드 추출, 기간과 기관에 따라 분류, 데이터 시각화 도구로 시각화</p>
+                            <h4>주요기능</h4>
+                            <p>자주 발생하는 상위 10개 키워드의 기간별 추세 그래프와 표, 전체 기간 동안 발생한 키워드의 wordcloud 출력</p>
+                            <h4>Skills</h4>
+                            <p>python, tableu</p>
+                            <h4>Github link</h4>
+                            <h4>발생한 문제점과 해결과정</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column pt-3">
-                <h3 class="semibold">site project</h3>
-                <div class="row border border-black rounded p-5">
-                    <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                    <div class="col-8 py-3 fw-medium">
-                        <h4>목적과 과정에 대한 설명</h4>
-                        <p>목적 : django를 사용한 서비스 개발</p>
-                        <p>
-                            과정 : Discord 음성 채팅을 사용해 회의 진행
-                            1. 아이디어 도출 및 구체화 (노션사용)
-                            2. DB 설계 (ERD 사용), 화면 구성 설정 (Figma 사용)
-                            3. 업무 배분 및 개발 진행 (파트별로 구분. 상품정보페이지 담당)
-                            4. 일일 스크럼 진행
-                            5. 개발 완료 후 시연 발표 (zoom을 통해 진행)
-                        </p>
-                        <h4>주요기능</h4>
-                        <p>
-                            1. 기본적인 회원관리 기능 (회원가입, 로그인)
-                            2. 상품 정보 조회 및 장바구니에 담기
-                            3. 유저 정보 페이지
-                        </p>
-                        <h4>FrontEnd</h4>
-                        <h4>Backend</h4>
-                        <h4>DB</h4>
-                        <h4>Deployment</h4>
-                        <h4>발생한 문제점과 해결과정</h4>
-                        <h4>Github link</h4>
+                <div class="d-flex flex-column pt-3">
+                    <h3 class="semibold">site project</h3>
+                    <div class="row border border-black rounded p-5">
+                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
+                        <div class="col-8 py-3 fw-medium">
+                            <h4>목적과 과정에 대한 설명</h4>
+                            <p>목적 : django를 사용한 서비스 개발</p>
+                            <p>
+                                과정 : Discord 음성 채팅을 사용해 회의 진행
+                                1. 아이디어 도출 및 구체화 (노션사용)
+                                2. DB 설계 (ERD 사용), 화면 구성 설정 (Figma 사용)
+                                3. 업무 배분 및 개발 진행 (파트별로 구분. 상품정보페이지 담당)
+                                4. 일일 스크럼 진행
+                                5. 개발 완료 후 시연 발표 (zoom을 통해 진행)
+                            </p>
+                            <h4>주요기능</h4>
+                            <p>
+                                1. 기본적인 회원관리 기능 (회원가입, 로그인)
+                                2. 상품 정보 조회 및 장바구니에 담기
+                                3. 유저 정보 페이지
+                            </p>
+                            <h4>FrontEnd</h4>
+                            <p>Html, css, Bootstrap</p>
+                            <h4>Backend</h4>
+                            <p>Django</p>
+                            <h4>DB</h4>
+                            <p>sqlite, postgres</p>
+                            <h4>Deployment</h4>
+                            <p>AWS EC2</p>
+                            <h4>Github link</h4>
+                            <h4>발생한 문제점과 해결과정</h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex flex-column pt-3 pb-5">
-                <h3 class="semibold">profile page</h3>
-                <div class="row border border-black rounded p-5">
-                    <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                    <div class="col-8 py-3 fw-medium">
-                        <h4>목적과 과정에 대한 설명</h4>
-                        <p>목적 : 스킬과 프로젝트 등에 대한 정보를 보기 쉽게 하기 위해</p>
-                        <h4>FrontEnd</h4>
-                        <p>HTML, CSS, Bootstrap</p>
-                        <h4>Deployment</h4>
-                        <p>Netlify</p>
-                        <h4>발생한 문제점과 해결과정</h4>
-                        <h4>Github link</h4>
+                <div class="d-flex flex-column pt-3 pb-5">
+                    <h3 class="semibold">profile page</h3>
+                    <div class="row border border-black rounded p-5">
+                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
+                        <div class="col-8 py-3 fw-medium">
+                            <h4>목적과 과정에 대한 설명</h4>
+                            <p>목적 : 스킬과 프로젝트 등에 대한 정보를 보기 쉽게 하기 위해</p>
+                            <h4>FrontEnd</h4>
+                            <p>HTML, CSS, Bootstrap</p>
+                            <h4>Deployment</h4>
+                            <p>Netlify</p>
+                            <h4>Github link</h4>
+                            <h4>발생한 문제점과 해결과정</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
     <footer id="githubRepo" class="d-flex flex-column justify-content-center align-items-center py-5 bg-light fs-5" style="width:100vw">
-        <p><a href="">Github Link</a></p>
-        <p>project of T.H</p>
+        <p><img src="github-logo.png" alt="github-logo" style="height: 21px;"><a href="" class="text-decoration-none text-black ms-1">Github Repo</a></p>
+        <p>© Kim tae hyoung. All rights reserved</p>
     </footer>
-    <!-- <div>page up 버튼</div> -->
+    <div id="pageUpButton" class="fs-1 fw-bold border rounded px-3"><a href="#pageTitle" class="text-decoration-none text-black">↑</a></div>
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
