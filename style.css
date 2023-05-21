@@ -4,7 +4,6 @@
 
 #skills>div>div>div:hover {
     transform: translate(0, -2.5px);
-    background-color: rgb(246, 245, 245);
 }
 
 
