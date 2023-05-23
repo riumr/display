@@ -10,22 +10,33 @@
     <title>Display page</title>
 </head>
 <body>
-    <!-- section line + shadow border -->
     <header id="pageTitle"class="d-flex justify-content-center align-items-center py-5 fs-1 fw-bold" style="width:100vw;height:65rem;">
         PROJECT UNTIL NOW
     </header>
-    <!-- 위치 고정하기 -->
+    
     <div id="buttonToTitle" class="d-flex justify-content-center">
         <div class="row text-center mx-3 fs-3 gx-3" style="width:60rem">
-            <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#aboutMe" class="text-decoration-none text-black">ABOUT ME</a></div>
+            <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#summary" class="text-decoration-none text-black">SUMMARY</a></div>
             <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#skills" class="text-decoration-none text-black">SKILLS</a></div>
             <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#projects" class="text-decoration-none text-black">PROJECTS</a></div>
+            <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#career" class="text-decoration-none text-black">CAREER</a></div>
             <div class="col-sm-3 border border-dark rounded py-2 fw-semibold"><a href="#githubRepo" class="text-decoration-none text-black">GITHUB</a></div>
         </div>
     </div>
     <main class="d-flex justify-content-center flex-column py-5" style="width:100%;height:100%;">
-        <!-- <h1 class="py-3">자기소개?</h1> -->
-        <div id="aboutMe" class="container">
+        <h2 class="fs-1 fw-bold mt-5">summary</h2>
+        <div id="summary" class="container">
+            <div class="p-3">
+                <h3>데이터 분석</h3>
+                <p></p>
+            </div>
+            <div class="p-3">
+                <h3>백엔드 프로젝트</h3>
+                <p></p>
+            </div>
+            <p class="fs-4 py-3">데이터 분석과 백엔드 개발이 가능한 개발자입니다.</p>
+        </div>
+        <!-- <div id="aboutMe" class="container">
             <h2 class="fs-1 fw-bold mt-5">ABOUT ME</h2>
             <div class="py-3 row">
                 <div class="py-3 col-4">
@@ -53,9 +64,8 @@
                     <p class="fs-4">The university. ph.d</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="skills" class="container">
-            <!-- 가로구성으로 변경 -->
             <h2 class="fs-1 fw-bold mt-5">SKILLS</h2>
             <div class="py-3 row">
                 <div class="py-3 col-4">
@@ -109,13 +119,13 @@
             </div>
         </div>
         <div id="projects">
-            <div class="container">
+            <div class="container row">
                 <h2 class="fs-1 fw-bold mt-5">PROJECTS</h2>
-                <div class="d-flex flex-column pt-3">
+                <div class="col-6 pt-3">
                     <h3 class="semibold">small project</h3>
-                    <div class="row border border-black rounded p-5">
-                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                        <div class="col-8 py-3 fw-medium">
+                    <div class="d-flex flex-column border border-black rounded p-5">
+                        <div class="py-3 fw-medium fs-3">photo</div>
+                        <div class="py-3 fw-medium">
                             <h4>목적과 과정에 대한 설명</h4>
                             <p>목적 : Django 기능에 대한 복습</p>
                             <p>과정 : 게시판, 회원가입 및 로그인, 유저페이지 구현</p>
@@ -125,7 +135,11 @@
                             <p>유저관리 : 회원가입, 로그인, 로그아웃</p>
                             <p>유저페이지 : 좋아요 한 글과 작성한 글 조회</p>
                             <h4>FrontEnd</h4>
-                            <p>HTML, CSS, bootstrap</p>
+                            <p>
+                                <span class="text-white bg-danger fs-5 fw-bold rounded p-2">HTML</span> 
+                                <span>CSS</span>
+                                <span>bootstrap</span>
+                            </p>
                             <h4>Backend</h4>
                             <p>Django</p>
                             <h4>DB</h4>
@@ -144,11 +158,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column pt-3">
+                <div class="col-6 pt-3">
                     <h3 class="semibold">text project</h3>
-                    <div class="row border border-black rounded p-5">
-                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                        <div class="col-8 py-3 fw-medium">
+                    <div class="d-flex flex-column border border-black rounded p-5">
+                        <div class="py-3 fw-medium fs-3">photo</div>
+                        <div class="py-3 fw-medium">
                             <h4>목적과 과정에 대한 설명</h4>
                             <p>목적 : 민원 발생 현황 파악</p>
                             <p>과정 : 엑셀파일 전처리를 통해 키워드 추출, 기간과 기관에 따라 분류, 데이터 시각화 도구로 시각화</p>
@@ -161,11 +175,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column pt-3">
+                <div class="col-6 pt-3">
                     <h3 class="semibold">site project</h3>
-                    <div class="row border border-black rounded p-5">
-                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                        <div class="col-8 py-3 fw-medium">
+                    <div class="d-flex flex-column border border-black rounded p-5">
+                        <div class="py-3 fw-medium fs-3">photo</div>
+                        <div class="py-3 fw-medium">
                             <h4>목적과 과정에 대한 설명</h4>
                             <p>목적 : django를 사용한 서비스 개발</p>
                             <p>
@@ -195,11 +209,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column pt-3 pb-5">
+                <div class="col-6 pt-3 pb-5">
                     <h3 class="semibold">profile page</h3>
-                    <div class="row border border-black rounded p-5">
-                        <div class="col-4 py-3 fw-medium fs-3">photo</div>
-                        <div class="col-8 py-3 fw-medium">
+                    <div class="d-flex flex-column border border-black rounded p-5">
+                        <div class="py-3 fw-medium fs-3">photo</div>
+                        <div class="py-3 fw-medium">
                             <h4>목적과 과정에 대한 설명</h4>
                             <p>목적 : 스킬과 프로젝트 등에 대한 정보를 보기 쉽게 하기 위해</p>
                             <h4>FrontEnd</h4>
@@ -210,6 +224,18 @@
                             <h4>발생한 문제점과 해결과정</h4>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="career" class="container">
+            <div class="row">
+                <div class="col d-flex p-3">
+                    <h2>세종</h2>
+                    <p></p>
+                </div>
+                <div class="col d-flex p-3">
+                    <h2>풀스택 부트캠프</h2>
+                    <p></p>
                 </div>
             </div>
         </div>
