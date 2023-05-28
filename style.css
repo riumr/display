@@ -25,6 +25,10 @@
     transform: translate(0, -2.7px);
 }
 
+#textBox {
+    width:500px;
+}
+
 @media screen {
     
 }
