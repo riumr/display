@@ -20,6 +20,9 @@
 
 #projects>div>div>div>div{
     transition:transform 0.5s ease;
+    border-radius: 8px;
+    box-shadow: 0px 0px 7px 2px #EDEDED;
+    padding: 21px 20px 20px 20px;
 }
 
 #projects>div>div>div>div:hover{
