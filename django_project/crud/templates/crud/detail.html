@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="border rounded py-2" style="width:30vw;">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="height: 50vh;">
+            <p id="content">{{selected.content}}</p>
+        </div>
+    <div id="processedContent" class="mb-2 d-flex flex-wrap"></div>
+    <div id="checkedContent" class="d-flex flex-wrap">
+        <span class="ms-3">교정된 단어</span>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-light ms-3"><a href="{% url 'crud:index' %}" class="text-decoration-none text-dark">목록</a></button>
+        <div class="me-3">
+            <button class="btn btn-light"><a href="{% url 'crud:like' selected.pk %}" data-bs-container="body" class="text-decoration-none text-dark">저장</a></button>
+            <!-- add modal : 저장알림 -->
+            <button id="featButton" class="btn btn-light">기능1</button>
+            <button id="featButton02" class="btn btn-light">기능2</button>
+            <button class="btn btn-light"><a href="{% url 'crud:update' selected.pk %}" class="text-decoration-none text-dark">수정</a></button>
+            <button class="btn btn-light"><a href="{% url 'crud:delete' selected.pk %}" class="text-decoration-none text-dark">삭제</a></button>
+        </div>
+    </div>
+</div>
+{% csrf_token %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    axios.defaults.xsrfCookieName = 'csrftoken'; 
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+    // 키워드 추출
+    const featButton = document.getElementById("featButton")
+    const processedContent = document.getElementById("processedContent")
+    function keywordFigure() {
+        axios.post('/new_feature_one/',{
+            // send content to server
+            text:"{{selected.content}}",
+        })
+        .then(function (response) {
+        // get content from server response
+        let htmlString = response.data;
+        const div01 = document.createElement("div")
+        div01.innerHTML = htmlString;
+        const keyword = div01.querySelector("#keywordContent");
+        let keywordContent = keyword.textContent;
+        keywordContent = keywordContent.replace("[","").replace("]","")
+        const splitContent= keywordContent.split(",")
+        // push content to variable
+        Array.from(splitContent).forEach((i)=>{
+            let divContent = document.createElement("div")
+            divContent.style.borderRadius="10px"
+            divContent.style.padding="3px"
+            divContent.style.margin="0px 0px 1px 10px"
+            divContent.style.backgroundColor="rgba(0, 0, 0, 0.05)"
+            divContent.style.boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+            divContent.innerText=i.replace("\'","").replace("\'","")
+            processedContent.appendChild(divContent)
+        })
+        featButton.removeEventListener("click", keywordFigure)
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+    }
+    featButton.addEventListener("click", keywordFigure)
+    // 맞춤법
+    const featButton02 = document.getElementById("featButton02")
+    const checkedContent = document.getElementById("checkedContent")
+    function correctSpell() {
+        axios.post("/new_feature_one/",{
+            text:"{{selected.content}}"
+        })
+        .then(function (response) {
+        let htmlString = response.data;
+        const div02 = document.createElement("div")
+        div02.innerHTML = htmlString;
+        const spelling = div02.querySelector("#spellContent")
+        let spellContent = spelling.textContent;
+        let divContent = document.createElement("div")
+        divContent.style.borderRadius="10px"
+        divContent.style.padding="3px"
+        divContent.style.margin="0px 0px 10px 10px"
+        divContent.style.backgroundColor="rgba(0, 0, 0, 0.05)"
+        divContent.style.boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
+        divContent.innerText=spellContent
+        checkedContent.appendChild(divContent)
+        featButton02.removeEventListener("click",correctSpell)
+        // 교정된 단어로 내용 업데이트하는 버튼
+        const updateButton = document.createElement("div")
+        // updateButton.style.width="1.9rem"
+        updateButton.style.height="1.9rem"
+        updateButton.style.borderRadius="10px"
+        updateButton.style.backgroundColor="rgba(0, 0, 0, 0.05)"
+        updateButton.style.margin="0px 0px 0px 7px"
+        updateButton.style.border="1px solid black"
+        updateButton.innerText="내용 비꾸기"
+        updateButton.style.padding="2px 4px 2px 4px"
+        updateButton.style.cursor = 'pointer';
+        updateButton.style.transition = 'background-color 0.3s ease, transform 0.1s ease';
+
+        updateButton.addEventListener('mousedown', function() {
+        updateButton.style.transform = 'scale(0.95)';
+        });
+
+        updateButton.addEventListener('mouseup', function() {
+        updateButton.style.transform = 'scale(1)';
+        });
+        updateButton.addEventListener("click",()=>{
+            let contentToChange = document.getElementById("content")
+            contentToChange.innerHTML=spellContent
+            axios.post("./update/",{ 
+                title:"{{selected.title}}",
+                content:spellContent,
+            })
+            .then(function (response) {
+                console.log("changed");
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        })
+        checkedContent.appendChild(updateButton)
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+    }
+    featButton02.addEventListener("click", correctSpell)
+</script>
+{% endblock content %}

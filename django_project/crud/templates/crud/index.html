@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 100%;">
+  {% if user.is_authenticated %}
+  <div class="mb-3 d-flex justify-content-end fs-5 fw-semibold">{{login_user}}</div>
+  {% endif %}
+  <table class="table table-hover">
+      <thead class="table-light">
+        <tr class="text-center">
+          <th id="login" scope="col" class="col-1">id</th>
+          <th scope="col" class="col-9">Title</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+      {% for i in index_table %}
+        <tr>
+          <th scope="row">{{i.article.id}}</th>
+          {% if user.is_authenticated %}
+          <td><a href="{% url 'crud:detail' i.pk %}" class="text-decoration-none text-dark">{{i.article.title}}</a></td>
+          {% else %}
+          <td><p class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#Modal" style="height:1px">{{i.article.title}}</p></td>
+          <!-- modal -->
+          <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">이 글을 볼 수 없습니다.</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  로그인이 필요합니다.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"><a href="{% url 'accounts:user_login' %}" class="text-white text-decoration-none">로그인</a></button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+      {% if user.is_authenticated %}
+      <div>
+        <button type='button' class="btn btn-light">
+          <a href="{% url 'accounts:logout' %}" class="text-decoration-none text-dark">로그아웃</a>  
+        </button>
+        <button type='button' class="btn btn-light ms-2">
+          <a href="{% url 'crud:user_page' %}" class="text-decoration-none text-dark">마이페이지</a>  
+        </button>
+      </div>
+      <button type='button' class="btn btn-light">
+          <a href="{% url 'crud:create' %}" class="text-decoration-none text-dark">글쓰기</a>
+      </button>
+      {% else %}
+      <div>
+        <button type='button' class="btn btn-light">
+          <a href="{% url 'accounts:signup' %}" class="text-decoration-none text-dark">회원가입</a>
+        </button>
+        <button type='button' class="btn btn-light">
+          <a href="{% url 'accounts:login_page' %}" class="text-decoration-none text-dark">로그인</a>  
+        </button>
+      </div>
+      {% endif %}
+    </div>
+</div>
+{% endblock %}

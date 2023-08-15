@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>numbers</title>
+  </head>
+  <body>
+    <button>click</button>
+    <div class="container"></div>
+    <style>
+      button {
+        position: fixed;
+      }
+      .container {
+        display: flex;
+        color: white;
+        flex-direction: column;
+      }
+      div {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        padding: 30px;
+        font-size: 30px;
+        border-radius: 100%;
+        text-align: center;
+      }
+    </style>
+    <script>
+      const button = document.querySelector("button");
+      const container = document.querySelector(".container");
+      button.addEventListener("click", () => randomNumber());
+      function randomNumber() {
+        const sixNumberLine = document.createElement("div");
+        for (let i = 0; i < 6; i++) {
+          const rNumber = _.sampleSize(_.range(1, 45), 1);
+          const item = document.createElement("div");
+          item.innerText = rNumber[0];
+          if (rNumber[0] <= 10) {
+            item.style.backgroundColor = "brown";
+            item.style.color = "white";
+            item.innerText = "0" + rNumber[0];
+            if (rNumber[0] === 10) {
+              item.innerText = rNumber[0] - "0";
+            }
+          } else if (10 < rNumber[0] && rNumber[0] <= 20) {
+            item.style.backgroundColor = "blue";
+            item.style.color = "white";
+          } else if (20 < rNumber[0] && rNumber[0] <= 30) {
+            item.style.backgroundColor = "red";
+            item.style.color = "white";
+          } else if (30 < rNumber[0] && rNumber[0] <= 40) {
+            item.style.backgroundColor = "black";
+            item.style.color = "white";
+          } else {
+            item.style.backgroundColor = "green";
+            item.style.color = "white";
+          }
+          sixNumberLine.appendChild(item);
+          container.appendChild(sixNumberLine);
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  </body>
+</html>

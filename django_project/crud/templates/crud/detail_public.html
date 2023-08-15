@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="border rounded">
+    <div class="d-flex justify-content-center align-items-center" style="width:30vw; height: 50vh;">
+            <h1>{{selected.content}}</h1>
+    </div>
+    <div class="d-flex justify-content-between mb-3">
+        <button class="btn btn-light ms-3"><a href="{% url 'crud:index' %}" class="text-decoration-none text-dark">목록</a></button>
+        <div class="me-3">
+            <button class="btn btn-light"><a href="{% url 'crud:like' selected.pk %}" class="text-decoration-none text-dark">좋아요</a></button>
+        </div>
+    </div>
+</div>
+{% endblock content %}

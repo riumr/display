@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap5 %}
+<form action="{% url 'crud:update' to_update.pk %}" method="POST" class="p-5 m-5 border round" style="width:30vw; height: 50vh;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="titleLabel" class="form-label">Title</label>
+        <input type="text" class="form-control" id="titleInput" name="title" value={{to_update.title}} required>
+      </div>
+      <div class="mb-3">
+        <label for="contentLabel" class="form-label">Content</label>
+        <textarea class="form-control" id="contentInput" name="content" rows="10">{{to_update.content}}</textarea>
+      </div>
+    <div class="d-flex justify-content-between">
+      <div>
+        <button type="button" class="btn btn-light"><a href="{% url 'crud:index' %}" class="text-decoration-none text-dark">목록</a></button>
+        <button type="button" class="btn btn-light"><a href="{% url 'crud:detail' to_update.pk %}" class="text-decoration-none text-dark">글 보기</a></button>
+      </div>
+      <button type="submit" class="btn btn-light text-decoration-none text-dark">수정</button>
+    </div>
+</form>
+{% endblock content %}

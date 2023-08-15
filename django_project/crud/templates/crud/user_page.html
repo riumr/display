@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="width: 100%;">
+    <!-- 좋아요한 글 -->
+    <table class="table table-hover">
+        <thead class="table-light">
+          <tr class="text-center">
+            <th scope="col" class="col-1">id</th>
+            <th scope="col" class="col-8">Title</th>
+            <th scope="col" class="col-1"></th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for i in activity_table %}
+          <tr>
+            <th scope="row">{{i.liked_article_id}}</th> 
+            <td><a href="{% url 'crud:detail' i.liked_article_id %}" class="text-decoration-none text-dark">{{i.liked_article.title}}</a></td>
+            <td><a href="{% url 'crud:like_delete' i.id %}" class="text-decoration-none text-dark">삭제</a></td>
+          </tr>
+        {% endfor %}
+          <a href="" class="text-decoration-none text-dark">결제</a>
+        </tbody>
+    </table>
+    <!-- 작성한 글 -->
+    <table class="table table-hover mt-2">
+      <thead class="table-light">
+        <tr class="text-center">
+          <th scope="col" class="col-1">id</th>
+          <th scope="col" class="col-9">Title</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+      {% for i in article %}
+        <tr>
+          <th scope="row">{{i.id}}</th> 
+          <td><a href="{% url 'crud:detail' i.id %}" class="text-decoration-none text-dark">{{i.title}}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+    <button class="btn btn-light ms-3"><a href="{% url 'crud:index' %}" class="text-decoration-none text-dark">목록</a></button>
+</div>
+{% endblock content %}
