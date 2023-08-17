@@ -1,0 +1,5 @@
+venv
+.env
+splite3
+django_project/.pg_service.conf
+django_project/.my_pgpass
