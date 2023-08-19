@@ -46,13 +46,20 @@
         // push content to variable
         Array.from(splitContent).forEach((i)=>{
             let divContent = document.createElement("div")
+            let divContentLink = document.createElement("a")
             divContent.style.borderRadius="10px"
             divContent.style.padding="3px"
             divContent.style.margin="0px 0px 1px 10px"
             divContent.style.backgroundColor="rgba(0, 0, 0, 0.05)"
             divContent.style.boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
             divContent.innerText=i.replace("\'","").replace("\'","")
-            processedContent.appendChild(divContent)
+            // add link to tag
+            divContentLink.style.color="inherit"
+            divContentLink.style.textDecoration="none"
+            divContentLink.href="{% url 'crud:index' %}"
+            divContentLink.append(divContent)
+            processedContent.appendChild(divContentLink)
+            // save keyword to DB
         })
         featButton.removeEventListener("click", keywordFigure)
         })
