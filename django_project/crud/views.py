@@ -8,7 +8,8 @@ from .forms import IndexForm
 from django.http import JsonResponse
 import json
 import os
-import openai
+
+# import openai
 from hanspell import spell_checker
 from PyKomoran import *
 from collections import Counter
@@ -23,7 +24,7 @@ import nltk
 # nltk.download("punkt")
 # nltk.download("averaged_perceptron_tagger")
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 komoran = Komoran("EXP")
 
 
