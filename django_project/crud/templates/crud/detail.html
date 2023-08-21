@@ -13,7 +13,7 @@
         <button class="btn btn-light ms-3"><a href="{% url 'crud:index' %}" class="text-decoration-none text-dark">목록</a></button>
         <div class="me-3">
             <button class="btn btn-light"><a href="{% url 'crud:like' selected.pk %}" data-bs-container="body" class="text-decoration-none text-dark">저장</a></button>
-            <!-- add modal : 저장알림 -->
+            <!-- 저장되었음을 알리는 modal 추가 -->
             <button id="featButton" class="btn btn-light">기능1</button>
             <button id="featButton02" class="btn btn-light">기능2</button>
             <button class="btn btn-light"><a href="{% url 'crud:update' selected.pk %}" class="text-decoration-none text-dark">수정</a></button>
@@ -30,17 +30,19 @@
     const featButton = document.getElementById("featButton")
     const processedContent = document.getElementById("processedContent")
     function keywordFigure() {
+        // 'content' 를 서버로 전송하는 비동기 동작
         axios.post('/new_feature_one/',{
-            // send content to server
             text:"{{selected.content}}",
         })
+        // 처리된 데이터를 서버로부터 받는다.
         .then(function (response) {
-        // get content from server response
+        // 전체 데이터에서 'content'를 추출한다. 
         let htmlString = response.data;
         const div01 = document.createElement("div")
         div01.innerHTML = htmlString;
         const keyword = div01.querySelector("#keywordContent");
         let keywordContent = keyword.textContent;
+        // 조작에 용이하도록 'content' 문자열을 조작한다
         keywordContent = keywordContent.replace("[","").replace("]","")
         const splitContent= keywordContent.split(",")
         // push content to variable
