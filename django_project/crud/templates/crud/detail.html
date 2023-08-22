@@ -42,26 +42,27 @@
         div01.innerHTML = htmlString;
         const keyword = div01.querySelector("#keywordContent");
         let keywordContent = keyword.textContent;
-        // 조작에 용이하도록 'content' 문자열을 조작한다
+        // 조작에 용이하도록 'content' 문자열을 조작한다.
         keywordContent = keywordContent.replace("[","").replace("]","")
+        // 문자열을 쉼표를 기준으로 분리된 리스트롤 만든다.
         const splitContent= keywordContent.split(",")
-        // push content to variable
+        // 리스트의 각 요소마다 동일한 style을 설정한다.
         Array.from(splitContent).forEach((i)=>{
             let divContent = document.createElement("div")
-            let divContentLink = document.createElement("a")
             divContent.style.borderRadius="10px"
             divContent.style.padding="3px"
             divContent.style.margin="0px 0px 1px 10px"
             divContent.style.backgroundColor="rgba(0, 0, 0, 0.05)"
             divContent.style.boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
             divContent.innerText=i.replace("\'","").replace("\'","")
-            // add link to tag
+            // 리스트의 각 요소에 링크도 부여해준다.
+            let divContentLink = document.createElement("a")
             divContentLink.style.color="inherit"
             divContentLink.style.textDecoration="none"
             divContentLink.href="{% url 'crud:index' %}"
             divContentLink.append(divContent)
             processedContent.appendChild(divContentLink)
-            // save keyword to DB
+            // 각 요소를 DB에 저장한다.
         })
         featButton.removeEventListener("click", keywordFigure)
         })
