@@ -34,9 +34,10 @@
         axios.post('/new_feature_one/',{
             text:"{{selected.content}}",
         })
-        // 처리된 데이터를 서버로부터 받는다.
         .then(function (response) {
-        // 전체 데이터에서 'content'를 추출한다. 
+        // 서버에서 받은 데이터에서 'content'를 추출
+        // 서버로부터 받은 데이터는 html 형태이기 때문에,
+        // 처리된 'content' 를 다시 추출한다.
         let htmlString = response.data;
         const div01 = document.createElement("div")
         div01.innerHTML = htmlString;
@@ -63,27 +64,35 @@
             divContentLink.append(divContent)
             processedContent.appendChild(divContentLink)
             // 각 요소를 DB에 저장한다.
+            // 
         })
+        // 작동 후 버튼의 'click' 동작을 제거해, 버튼이 한 번만 작동하도록 한다.
         featButton.removeEventListener("click", keywordFigure)
         })
         .catch(function (error) {
         console.log(error);
         })
     }
+    // 버튼 클릭시 keywordFigure 함수가 작동한다.
     featButton.addEventListener("click", keywordFigure)
-    // 맞춤법
+    // 맞춤법 교정
     const featButton02 = document.getElementById("featButton02")
     const checkedContent = document.getElementById("checkedContent")
     function correctSpell() {
+        // 'content' 를 서버로 전송하는 비동기 동작
         axios.post("/new_feature_one/",{
             text:"{{selected.content}}"
         })
         .then(function (response) {
+        // 서버에서 받은 데이터에서 'content'를 추출
+        // 서버로부터 받은 데이터는 html 형태이기 때문에,
+        // 처리된 'content' 를 다시 추출한다.
         let htmlString = response.data;
         const div02 = document.createElement("div")
         div02.innerHTML = htmlString;
         const spelling = div02.querySelector("#spellContent")
         let spellContent = spelling.textContent;
+        // 임의의 div를 만들고 style을 설정한다.
         let divContent = document.createElement("div")
         divContent.style.borderRadius="10px"
         divContent.style.padding="3px"
@@ -91,11 +100,12 @@
         divContent.style.backgroundColor="rgba(0, 0, 0, 0.05)"
         divContent.style.boxShadow="2px 2px 4px rgba(0, 0, 0, 0.4)"
         divContent.innerText=spellContent
+        // style을 설정한 div에 '처리된 content' 를 넣는다.
         checkedContent.appendChild(divContent)
+        // 버튼 click 동작을 제거해, 버튼이 한 번만 작동하도록 한다.
         featButton02.removeEventListener("click",correctSpell)
         // 교정된 단어로 내용 업데이트하는 버튼
         const updateButton = document.createElement("div")
-        // updateButton.style.width="1.9rem"
         updateButton.style.height="1.9rem"
         updateButton.style.borderRadius="10px"
         updateButton.style.backgroundColor="rgba(0, 0, 0, 0.05)"
