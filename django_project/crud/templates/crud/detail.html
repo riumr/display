@@ -113,16 +113,16 @@
         updateButton.style.border="1px solid black"
         updateButton.innerText="내용 비꾸기"
         updateButton.style.padding="2px 4px 2px 4px"
+        // 버튼 click 시, 눌리는 동작 구현
         updateButton.style.cursor = 'pointer';
         updateButton.style.transition = 'background-color 0.3s ease, transform 0.1s ease';
-
         updateButton.addEventListener('mousedown', function() {
         updateButton.style.transform = 'scale(0.95)';
         });
-
         updateButton.addEventListener('mouseup', function() {
         updateButton.style.transform = 'scale(1)';
         });
+        // 버튼 click 시, 서버에 비동기로 내용을 보낸다.
         updateButton.addEventListener("click",()=>{
             let contentToChange = document.getElementById("content")
             contentToChange.innerHTML=spellContent
