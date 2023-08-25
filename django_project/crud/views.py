@@ -8,21 +8,24 @@ from .forms import IndexForm
 from django.http import JsonResponse
 import json
 import os
-
-# import openai
-from hanspell import spell_checker
-from PyKomoran import *
 from collections import Counter
 
-# 영문 nlp
-from spellchecker import SpellChecker
-from textblob import TextBlob
+# import openai
+
+from hanspell import spell_checker  # 한글 맞춤법 교정에 사용
+from PyKomoran import *  # 한글 키워드 추출에 사용
+
+# 영문 NLP
+from spellchecker import SpellChecker  # 맞춤법
+from textblob import TextBlob  # 키워드 추출
 
 # 영문 keyword 분석에 필요한 코드
 import nltk
 
+# 아래 데이터도 다운 받아야한다.
 # nltk.download("punkt")
 # nltk.download("averaged_perceptron_tagger")
+
 
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 komoran = Komoran("EXP")
@@ -126,32 +129,36 @@ def user_profile(request):
     return render(request, "crud/user_profile.html")
 
 
+# 게시물 세부페이지에서 버튼을 클릭할 시 작동하는 기능들
 def new_feature_one(request):
     if request.method == "POST":
         text = json.loads(request.body)
-        # spell check
+        # spell check (맞춤법 교정)
         strip_text = str(list(text.values())).strip("[]").strip("''")
         spell_text = spell_checker.check(strip_text).as_dict()["checked"]
         checked_text = spell_text.split(" ")
-        # English spell_check
+        # English spell_check (영문 맞춤법 교정)
         if strip_text.isalpha():
             spell = SpellChecker()
             spell_text = spell.correction(strip_text)
 
-        # keyword
+        # keyword(키워드 추출)
         keyword = komoran.get_plain_text(strip_text)
         split_sentence = keyword.split(" ")
         keyword_set = []
+        # 함수를 적용한 내용의 범주가 token_to_get 리스트 안에 있으면
+        # keyword_set 리스트에 추가한다.
         token_to_get = ["NN", "NP", "NR", "SL", "NF", "SH", "NV", "MM", "MA"]
         for i in split_sentence:
             for j in token_to_get:
                 if j in i:
                     keyword_set.append(i)
         words = [word.split("/")[0] for word in keyword_set]
+        # 가장 빈도가 높은 단어를 키워드로 한다.
         word_count = Counter(words).items()
         word_count_top = max(Counter(words).values())
         top_words = [i[0] for i in word_count if i[1] == word_count_top]
-        # English keyword
+        # English keyword (영문 키워드 추출)
         if strip_text.isalpha():
             blob = TextBlob(strip_text)
             top_words = [word for word, pos in blob.tags if pos.startswith("NN")]
